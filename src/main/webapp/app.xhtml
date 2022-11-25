@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="WEB-INF/templates/master.xhtml">
+    <ui:define name="head">
+        <title>Лабораторная работа №3 - Стартовая страница</title>
+    </ui:define>
+
+    <ui:define name="main">
+        <main>
+            <h1>Приложение</h1>
+
+            <div class="first_row">
+                <canvas id="plot" width="220px" height="220px"></canvas>
+                <h:form>
+                <div class="input">
+                    <div>
+                        <span>X: </span>
+                        <h:commandButton value="-4" class="x" id="x--4"/>
+                        <h:commandButton value="-3" class="x" id="x--3"/>
+                        <h:commandButton value="-2" class="x" id="x--2"/>
+                        <h:commandButton value="-1" class="x" id="x--1"/>
+                        <h:commandButton value="0" class="x" id="x-0"/>
+                        <h:commandButton value="1" class="x" id="x-1"/>
+                        <h:commandButton value="2" class="x" id="x-2"/>
+                        <h:commandButton value="3" class="x" id="x-3"/>
+                        <h:commandButton value="4" class="x" id="x-4"/>
+
+                        <h:inputText type="hidden" class="x_real" name="x" value="#{hits.hit.x}">
+                            <f:validateRequired/>
+                            <f:validateDoubleRange minimum="-4" maximum="4"/>
+                        </h:inputText>
+                    </div>
+                    <div>
+                        <label class="name">Y(-5...3): </label>
+                        <h:inputText a:placeholder="-5...3" name="y" class="y" value="#{hits.hit.y}">
+                            <f:validateRequired/>
+                            <f:validateDoubleRange minimum="-5" maximum="3"/>
+                        </h:inputText>
+                    </div>
+                    <div>
+                        <label class="name">R(2...5): </label>
+                        <h:inputText a:placeholder="2...5" name="r" class="r_real" value="#{hits.hit.r}">
+                            <f:validateRequired/>
+                            <f:validateDoubleRange minimum="2" maximum="5"/>
+                        </h:inputText>
+
+<!--                        <span>R: </span>-->
+<!--                        <h:commandButton value="1" class="r" id="r-1"/>-->
+<!--                        <h:commandButton value="1.5" class="r" id="r-1-5"/>-->
+<!--                        <h:commandButton value="2" class="r" id="r-2"/>-->
+<!--                        <h:commandButton value="2.5" class="r" id="r-2-5"/>-->
+<!--                        <h:commandButton value="3" class="r" id="r-3"/>-->
+
+<!--                        <h:inputText converterId="javax.faces.Double" type="hidden" class="r_real" name="r" value="#{hits.hit.r}">-->
+<!--                            <f:validateRequired/>-->
+<!--                            <f:validateDoubleRange minimum="1" maximum="3"/>-->
+<!--                        </h:inputText>-->
+
+                    </div>
+                    <div>
+                        <h:commandButton class="submit" value="Submit" actionListener="#{hits.addHit()}"/>
+                        <h:commandButton class="clear" value="Clear History" actionListener="#{hits.clear}" immediate="true"/>
+                    </div>
+                </div>
+                </h:form>
+            </div>
+
+            <h:dataTable value="#{hits.hits}" var="hit" id="result">
+                <h:column>
+                    <f:facet name="header">X</f:facet>
+                    <h:outputText value="#{hit.x}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Y</f:facet>
+                    <h:outputText value="#{hit.y}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">R</f:facet>
+                    <h:outputText value="#{hit.r}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Hit</f:facet>
+                    <h:outputText value="#{hit.hitResult}" escape="false"/>
+                </h:column>
+            </h:dataTable>
+        </main>
+
+        <h:link outcome="toIndex">
+            На стартовую страницу
+        </h:link>
+
+        <h:outputScript library="js" name="app.js"/>
+    </ui:define>
+</ui:composition>
+
+</html>

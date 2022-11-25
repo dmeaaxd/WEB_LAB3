@@ -1,0 +1,99 @@
+body {
+    background-color: #2e3131;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+header {
+    width: fit-content;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: auto;
+    font-style: italic;
+    color: #A5C9CA;
+    font-size: 20px;
+    display: grid;
+    text-align: center;
+    border-radius: 25px;
+    border: 1px solid;
+}
+
+input::placeholder {
+    color: #2e3131;
+}
+
+label.name {
+    margin-right: 10px;
+}
+
+main {
+    display: grid;
+    justify-items: center;
+}
+
+div.first_row {
+    display: flex;
+    justify-content: center;
+}
+
+div.input {
+    background-color: #A5C9CA;
+    border-radius: 25px;
+    display: grid;
+    align-content: center;
+    height: fit-content;
+    padding: 10px;
+}
+
+div > div {
+    margin: 12px 12px 12px 20px;
+}
+
+table {
+    margin-left: 10px;
+    font-family: arial, sans-serif;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: auto;
+    border: solid black 1px;
+    border-radius: 6px;
+}
+
+/* top-left border-radius */
+table tr:first-child th:first-child {
+    border-top-left-radius: 6px;
+}
+
+/* top-right border-radius */
+table tr:first-child th:last-child {
+    border-top-right-radius: 6px;
+}
+
+/* bottom-left border-radius */
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 6px;
+}
+
+/* bottom-right border-radius */
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 6px;
+}
+
+td, th {
+    background-color: #A5C9CA;
+    border: 1px solid #395B64;
+    text-align: center;
+    padding: 8px;
+}
+
+th.variable {
+    width: 70px;
+    text-align: center;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
